@@ -1,0 +1,31 @@
+<p>themsach works!</p>
+<div class="add-book-form">
+    <h3>Thêm sách mới</h3>
+    <form (ngSubmit)="addBook()">
+      <div>
+        <label for="name">Tên sách:</label>
+        <input type="text" [(ngModel)]="newBook.name" name="name" required />
+      </div>
+  
+      <div>
+        <label for="image">Ảnh sách:</label>
+        <input type="text" [(ngModel)]="newBook.image" name="image" placeholder="URL ảnh" />
+      </div>
+  
+      <div>
+        <label for="category">Thể loại:</label>
+        <input type="text" [(ngModel)]="newBook.category" name="category" required />
+      </div>
+  
+      <div>
+        <label for="quantity">Số lượng:</label>
+        <input type="number" [(ngModel)]="newBook.quantity" name="quantity" min="1" required />
+      </div>
+  
+      <div class="form-actions">
+        <button type="submit">Lưu sách</button>
+        <button type="button" (click)="closeForm.emit()">Hủy</button>
+      </div>
+    </form>
+  </div>
+  

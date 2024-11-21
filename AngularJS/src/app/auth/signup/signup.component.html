@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="containerImg">
+        <img src="sign.png" alt="">
+    </div>
+    <div class="containerContent">
+        <h3>Chào bạn đến với SPACE BOOKS</h3>
+        <h1>ĐĂNG KÝ</h1>
+        <form (ngSubmit)="onSubmit()">
+            <label for="firstName">Họ</label>
+            <div class="inputRow">
+                <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" required>
+            </div>
+
+            <label for="lastName">Tên</label>
+            <div class="inputRow">
+                <input type="text" id="lastName" [(ngModel)]="lastName" name="lastName" required>
+            </div>
+
+            <label for="email">Email</label>
+            <div class="inputRow">
+                <input type="email" id="email" [(ngModel)]="email" name="email" required>
+            </div>
+            <label for="password">Mật khẩu</label>
+
+            <div class="inputRow">
+                <input type="password" id="password" [(ngModel)]="password" name="password" required>
+            </div>
+
+            <label for="confirmPassword">Xác nhận mật khẩu</label>
+            <div class="inputRow">
+                <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+            </div>
+            
+            <button type="submit">ĐĂNG KÝ</button>
+        </form>
+        <h6>Đăng nhập bằng</h6>
+        <div class="logins">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-google"></i></a>
+        </div>
+        <p>Bạn đã có tài khoản? <a routerLink="/auth/signin">ĐĂNG NHẬP</a></p>
+    </div>
+</div>
