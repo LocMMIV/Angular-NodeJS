@@ -10,7 +10,7 @@ export class SearchService {
   searchData(data: any[], searchTerm: string): any[] {
     const term = searchTerm.toLowerCase();
     return data.filter(item => {
-      // Duyệt qua từng trường trong mỗi đối tượng (bạn có thể thay đổi tùy theo cấu trúc của từng bảng)
+      // Duyệt qua từng trường trong mỗi đối tượng
       return Object.keys(item).some(key => {
         const value = item[key] ? item[key].toString().toLowerCase() : ''; // Chuyển thành chuỗi và đảm bảo không null/undefined
         const valueWithoutTones = this.removeVietnameseTones(value); // Loại bỏ dấu nếu cần

@@ -1,6 +1,6 @@
 .container-fluid {
     width: 98%;
-    height: 95.5%;
+    height: 85.8%;
     margin: 20px auto;
     padding: 20px;
     background: white;
@@ -157,7 +157,6 @@
     cursor: not-allowed;
 }
 
-/* Đảm bảo phần phân trang luôn nằm dưới bảng */
 .product-table-container .pagination {
-    margin-top: auto; /* Đảm bảo phân trang sẽ luôn nằm ở dưới bảng */
+    margin-top: auto;
 }

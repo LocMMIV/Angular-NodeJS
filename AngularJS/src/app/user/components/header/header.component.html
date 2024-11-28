@@ -1,0 +1,19 @@
+<nav class="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="logo">
+    </div>
+    <ul class="menu">
+        <li><a routerLink="/trangchu" routerLinkActive="active"><span></span><i class="bi bi-house-door"></i>TRANG CHỦ</a></li>
+        <li><a routerLink="/theloai" routerLinkActive="active"><span></span><i class="bi bi-menu-button"></i>THỂ LOẠI</a></li>
+        <li><a routerLink="/xephang" routerLinkActive="active"><span></span><i class="bi bi-bar-chart"></i>XẾP HẠNG</a></li>
+    </ul>
+    <div class="account" (mouseover)="showDropdown()" (mouseleave)="hideDropdown()">
+        <button class="btn account-btn">TÀI KHOẢN <i class="icon-dropdown" [class.rotate]="isDropdownOpen"></i></button>
+        <ul class="dropdown-menu" [class.show]="isDropdownOpen">
+            <li><a href="#" class="dropdown-item">Thông tin tài khoản</a></li>
+            <li><a href="#" class="dropdown-item">Mượn Sách</a></li>
+            <hr>
+            <li><a href="#" class="dropdown-item">Đăng Xuất</a></li>
+        </ul>
+    </div>
+</nav>

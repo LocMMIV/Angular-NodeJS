@@ -12,9 +12,8 @@ import { QlmuontraComponent } from './qlmuontra/qlmuontra.component';
 import { ThemsachComponent } from './qlsanpham/sach/themsach/themsach.component';
 
 const routes: Routes = [
-  {
-    path: 'admin', component: AdminComponent, children: [
-      { path: '', redirectTo: 'thongke', pathMatch: 'full' },  // Điều hướng mặc định
+  { path: '', component: AdminComponent, children: [
+      { path: '', redirectTo: 'thongke', pathMatch: 'full' },
       { path: 'thongke', component: ThongkeComponent },
       { path: 'qlnguoidung/khachhang', component: KhachhangComponent },
       { path: 'qlnguoidung/nhanvien', component: NhanvienComponent },
@@ -23,7 +22,7 @@ const routes: Routes = [
       { path: 'qllienhe', component: QllienheComponent },
       { path: 'qlmuontra', component: QlmuontraComponent },
       { path: 'qlsanpham/sach/themsach', component: ThemsachComponent },
-      { path: 'logout', redirectTo: '/login' },
+      { path: 'logout', redirectTo: '/auth/logout', pathMatch: 'full' }
     ]
   }
 ];

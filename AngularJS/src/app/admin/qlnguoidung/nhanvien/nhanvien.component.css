@@ -1,6 +1,6 @@
 .container-fluid {
     width: 98%;
-    height: 95.5%;
+    height: 85.8%;
     margin: 20px auto;
     padding: 20px;
     background: white;
@@ -68,7 +68,7 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Đảm bảo bảng chiếm không gian còn lại */
+    flex-grow: 1;
 }
 
 .employee-table {

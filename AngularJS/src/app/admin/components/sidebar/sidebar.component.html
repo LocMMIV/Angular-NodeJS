@@ -3,13 +3,17 @@
 </div>
 <hr style="height: 2px;">
 
-<div class="admin">
-    <img src="avatar.png" alt="avatar">
-    <strong>Lê Tấn Lộc</strong>
+<div class="admin" (click)="toggleDropdown()">
+    <img [src]="adminAvatar ? adminAvatar : 'avatar.png'" alt="avatar">
+    <strong>{{ adminName }}</strong>
+    <ul class="dropdown-menu" [class.show]="isDropdownOpen">
+        <li><a href="#" class="dropdown-item">Thông tin tài khoản</a></li>
+        <li><a href="#" class="dropdown-item">Đăng Xuất</a></li>
+    </ul>
 </div>
 <hr style="height: 2px;">
 
-<ul class="menu">                <!--Menu-->
+<ul class="menu">
     <li><a routerLink="/thongke" routerLinkActive="active"><span></span><i class="bi bi-graph-up"></i>Thống kê</a></li>
     <li><a routerLink="/qlsanpham/sach" routerLinkActive="active"><span></span><i class="bi bi-book"></i>Quản lý sách</a></li>
     <li><a routerLink="/qlsanpham/theloai" routerLinkActive="active"><span></span><i class="bi bi-menu-button"></i>Quản lý thể loại</a></li>
@@ -18,8 +22,3 @@
     <li><a routerLink="/qlnguoidung/nhanvien" routerLinkActive="active"><span></span><i class="bi bi-people"></i>Quản lý nhân viên</a></li>
     <li><a routerLink="/qllienhe" routerLinkActive="active"><span></span><i class="bi bi-telephone"></i>Quản lý liên hệ</a></li>
 </ul>
-
-<hr style="height: 2px;">
-<div class="logout">
-    <a routerLink="/logout"><i class="bi bi-box-arrow-right"></i>Đăng xuất</a>
-</div>

@@ -34,7 +34,7 @@ import { ThemsachComponent } from './qlsanpham/sach/themsach/themsach.component'
     CommonModule,
     AdminRoutingModule,
     FormsModule
-  ]
+  ],
 })
 export class AdminModule { }
 
