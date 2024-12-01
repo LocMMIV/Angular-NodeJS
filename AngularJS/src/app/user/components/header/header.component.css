@@ -5,7 +5,7 @@
 
 .logo img {
     width: 200px;
-    padding: 5px 5px 5px 20px;
+    padding: 5px 5px 5px 10px;
 }
 
 
@@ -51,12 +51,12 @@
 
 /* Account Button */
 .account .account-btn {
-    height: 93px;
+    height: 90px;
     width: 250px;
     background-color: #AB7442;
     color: white;
     border: none;
-    border-radius: 0; /* Không bo cong viền */
+    border-radius: 0;
     cursor: pointer;
     font-size: 20px;
     display: flex;
@@ -76,46 +76,40 @@
     border-width: 0 2px 2px 0;
     padding: 3px;
     transform: rotate(45deg);
-    margin-left: 8px;
+    margin-left: 20px;
     transition: transform 0.3s ease;
 }
 
-
-/* Thêm class "rotate" để xoay */
 .icon-dropdown.rotate {
     transform: rotate(225deg);
 }
 
-/* Định dạng nút Account */
+
 .account {
     position: relative;
 }
 
 /* Dropdown Menu */
 .dropdown-menu {
-    display: none; /* Ẩn menu mặc định */
+    display: none;
     position: absolute;
     left: 0;
+    margin-top: 10px;
     background-color: white;
     border: 1px solid #ddd;
+    border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
     z-index: 1000;
-    min-width: 200px;
+    width: 250px;
     padding: 10px 0;
-    opacity: 0; /* Menu ban đầu trong suốt */
-    transform: translateY(20px); /* Di chuyển xuống dưới */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Hiệu ứng mượt mà */
+    opacity: 0;
 }
 
-/* Khi menu hiển thị */
 .dropdown-menu.show {
-    display: block; /* Hiển thị menu */
-    opacity: 1; /* Menu hiện rõ */
-    transform: translateY(0); /* Trả về vị trí ban đầu */
+    display: block;
+    opacity: 1;
 }
 
-/* Các item trong menu */
 .dropdown-menu .dropdown-item {
     padding: 10px 20px;
     text-decoration: none;
@@ -123,10 +117,18 @@
     display: block;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+.dropdown-menu .dropdown-item i {
+    margin-right: 10px;
+}
 
 .dropdown-menu .dropdown-item:hover {
     background-color: #f8f9fa;
     color: #AB7442;
+}
+
+.dropdown-menu .dropdown-item.logout:hover {
+    background-color: #f8f9fa;
+    color: red;
 }
 
 

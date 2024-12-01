@@ -1,6 +1,6 @@
 .footer {
     color: white;
-    padding: 40px 20px;
+    padding: 30px 20px;
 }
 
 .footer-container {
@@ -8,6 +8,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 0px 100px;
 }
 
 .footer-section {
@@ -19,6 +20,7 @@
     font-size: 25px;
     margin-bottom: 20px;
     color: white;
+    text-align: left;
 }
 
 .footer-section p,
@@ -26,6 +28,7 @@
 .footer-section li {
     font-size: 18px;
     line-height: 2;
+    text-align: left;
 }
 
 .footer-section ul {
@@ -37,6 +40,10 @@
     color: white;
     text-decoration: none;
     transition: color 0.3s, letter-spacing 0.3s, transform 0.3s;
+}
+
+.footer-section ul li a i {
+    margin-right: 5px;
 }
 
 .footer-section ul li a:hover,
@@ -51,21 +58,29 @@
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    border: 1px solid white;
+    background: white;
+    padding: 10px 15px;
 }
 
 .newsletter input {
     flex: 1;
     padding: 10px;
+    font-size: 15px;
     border: none;
-    border-radius: 5px;
+    background: none;
+}
+.newsletter input:focus {
+    outline: none;
 }
 
 .newsletter button {
     padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
     border: none;
     background-color: #f1c40f;
     color: white;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -80,6 +95,8 @@
     font-size: 15px;
     border-top: 1px solid #444;
     padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer-bottom a {

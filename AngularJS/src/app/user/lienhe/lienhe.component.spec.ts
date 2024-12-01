@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { XephangComponent } from './xephang.component';
+import { LienheComponent } from './lienhe.component';
 
-describe('XephangComponent', () => {
-  let component: XephangComponent;
-  let fixture: ComponentFixture<XephangComponent>;
+describe('LienheComponent', () => {
+  let component: LienheComponent;
+  let fixture: ComponentFixture<LienheComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [XephangComponent]
+      declarations: [LienheComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(XephangComponent);
+    fixture = TestBed.createComponent(LienheComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

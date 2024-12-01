@@ -1,17 +1,16 @@
 <div class="logo">
     <img src="logo.png" alt="logo">
 </div>
-<hr style="height: 2px;">
 
-<div class="admin" (click)="toggleDropdown()">
-    <img [src]="adminAvatar ? adminAvatar : 'avatar.png'" alt="avatar">
+<div class="admin" (click)="toggleDropdown(); toggleClick()" [class.clicked]="isClicked">
+    <i class="bi bi-person-circle"></i>
     <strong>{{ adminName }}</strong>
     <ul class="dropdown-menu" [class.show]="isDropdownOpen">
         <li><a href="#" class="dropdown-item">Thông tin tài khoản</a></li>
-        <li><a href="#" class="dropdown-item">Đăng Xuất</a></li>
+        <li><a routerLink="/logout" class="dropdown-item logout"><i class="bi bi-box-arrow-right"></i> Đăng Xuất</a></li>
     </ul>
 </div>
-<hr style="height: 2px;">
+
 
 <ul class="menu">
     <li><a routerLink="/thongke" routerLinkActive="active"><span></span><i class="bi bi-graph-up"></i>Thống kê</a></li>

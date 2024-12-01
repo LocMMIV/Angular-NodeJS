@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user.component';
 import { TrangchuComponent } from './trangchu/trangchu.component';
 import { TheloaiComponent } from './theloai/theloai.component';
-import { XephangComponent } from './xephang/xephang.component';
+import { LienheComponent } from './lienhe/lienhe.component';
 
 
 
@@ -13,7 +13,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'trangchu', pathMatch: 'full' },
       { path: 'trangchu', component: TrangchuComponent },
       { path: 'theloai', component: TheloaiComponent },
-      { path: 'xephang', component: XephangComponent },
+      { path: 'lienhe', component: LienheComponent },
+      { path: 'logout', redirectTo: '/auth/logout', pathMatch: 'full' }
+      
     ]
   }
 ];

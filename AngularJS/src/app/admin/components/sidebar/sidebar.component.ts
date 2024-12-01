@@ -6,15 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  adminAvatar: string | null = null;
   adminName: string = 'Lê Tấn Lộc';
   isDropdownOpen = false; // Trạng thái mở/đóng menu
+  isClicked = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    // Lấy ảnh của admin từ một dịch vụ hoặc API
-    this.adminAvatar = this.getAdminAvatar();
     this.adminName = this.getAdminName();
   }
 
@@ -23,9 +21,8 @@ export class SidebarComponent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  // Hàm giả lập để lấy ảnh của admin (có thể thay thế bằng việc gọi API hoặc dịch vụ)
-  getAdminAvatar(): string | null {
-    return null; 
+  toggleClick() {
+    this.isClicked = !this.isClicked;
   }
 
   // Hàm giả lập để lấy tên của admin

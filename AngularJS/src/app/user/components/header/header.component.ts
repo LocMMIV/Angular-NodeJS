@@ -6,14 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  isDropdownOpen = false;
-  // Hiển thị menu khi di chuột vào
-  showDropdown() {
-    this.isDropdownOpen = true;
+  isDropdownOpen: boolean = false;
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  // Ẩn menu khi di chuột ra
-  hideDropdown() {
-    this.isDropdownOpen = false;
+  isLogoutModalVisible = false;
+
+  openLogoutModal() {
+    this.isLogoutModalVisible = true;
+  }
+
+  confirmLogout() {
+    // Thực hiện đăng xuất
+    console.log('Đã đăng xuất');
+  }
+
+  cancelLogout() {
+    // Đóng modal
+    this.isLogoutModalVisible = false;
   }
 }
+

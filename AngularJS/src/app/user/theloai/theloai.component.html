@@ -1,1 +1,44 @@
-<p>theloai works!</p>
+<div class="banner">
+    <div class="slideshow">
+        <img src="banner1.png" alt="Banner 1">
+    </div>
+    <div class="banner-content">
+        <h1>KHÁM PHÁ THỂ LOẠI SÁCH!</h1>
+        <p>Từ tiểu thuyết đến khoa học, tìm ngay thể loại yêu thích của bạn!</p>
+    </div>
+</div>
+
+<div class="container"> 
+    <div class="filters">
+        <div class="filter-item">
+            <div class="category-filters">
+                <button class="category"><i class="bi bi-funnel"></i> Lọc</button>
+                <button *ngIf="selectedCategory === 'novel' || !selectedCategory" (click)="setCategory('novel')" [class.active]="selectedCategory === 'novel'">Tiểu thuyết</button>
+                <button *ngIf="selectedCategory === 'science' || !selectedCategory" (click)="setCategory('science')" [class.active]="selectedCategory === 'science'">Khoa học</button>
+                <button *ngIf="selectedCategory === 'history' || !selectedCategory" (click)="setCategory('history')" [class.active]="selectedCategory === 'history'">Lịch sử</button>
+                <button *ngIf="selectedCategory" class="clear-btn" (click)="clearCategory()">Xóa tất cả</button>
+            </div>
+            </div>
+        </div>
+
+        <div class="sort-item">
+            <div class="sort-options">
+                <label for="sort">Sắp xếp theo:</label>
+                <div class="sort-option" (click)="setSort('newest')" [class.active]="selectedSort === 'newest'">Mới nhất</div>
+                <div class="sort-option" (click)="setSort('asc')" [class.active]="selectedSort === 'asc'">A-Z</div>
+                <div class="sort-option" (click)="setSort('desc')" [class.active]="selectedSort === 'desc'">Z-A</div>
+            </div>
+        </div>
+
+    <div class="product-list">
+        <div *ngFor="let book of filteredBooks" class="book-card">
+            <img [src]="book.image" alt="{{ book.title }}" class="book-image">
+            <div class="book-info">
+                <h3 class="book-title">{{ book.title }}</h3>
+                <p class="book-author">{{ book.author }}</p>
+                <p class="book-category">{{ book.category }}</p>
+                <p class="book-status">{{ book.status }}</p>
+            </div>
+        </div>
+    </div>
+</div>

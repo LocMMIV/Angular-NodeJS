@@ -1,0 +1,210 @@
+.banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh phủ đầy banner mà không bị bóp méo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Đặt ảnh dưới các phần tử khác */
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: white;
+    z-index: 2;
+}
+
+.banner-content h1 {
+    font-size: 50px;
+    margin: 10px 0;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffffff 0%, #ab7742 100%); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 400% 400%;
+    animation: animationName 5s ease infinite;
+}
+
+@keyframes animationName {                  
+    0% {
+        background-position: 0% 50%;
+    } 50% {
+        background-position: 100% 50%;
+    } 100% {
+        background-position: 0% 50%;
+    }
+}
+
+.banner-content p {
+    font-size: 25px;
+    color: white;
+    margin: 20px 0;
+    max-width: 1000px;
+    line-height: 1.5;
+}
+
+.container {
+    width: 90%;
+    padding: 10px 0px 50px 0px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 20px;
+}
+
+.filter-item, .sort-item {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item i {
+    margin-right: 5px;
+}
+
+.category {
+    border: none;
+    border-radius: 0px;
+    background: #ab7742;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+}
+
+.sort-item label {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.category-filters {
+    display: flex;
+    gap: 10px;
+}
+
+.sort-options {
+    display: flex;
+    gap: 50px;
+}
+
+.sort-option {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.sort-option:hover {
+    color: #ab7742;
+}
+
+.sort-option.active {
+    color: #ab7742;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 1px solid #ab7742;
+}
+
+button.active {
+    background-color: #ab7742;
+    color: white;
+}
+
+.category-filters .clear-btn {
+    background: none;
+    border: none;
+    color: black;
+}
+
+.category-filters .clear-btn:hover {
+    color: #ab7742;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.book-card {
+    width: 18.788%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-image {
+    width: 100%;
+    height: 250px;
+    transition: transform 0.3s ease;
+}
+
+.book-image:hover {
+    transform: scale(1.1);
+}
+
+.book-info {
+    margin-top: 10px;
+}
+
+.book-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.book-author {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.book-category {
+    font-size: 15px;
+    color: #777;
+}
+
+.book-status {
+    font-size: 13px;
+    color: green;
+}
