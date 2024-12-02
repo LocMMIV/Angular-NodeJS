@@ -93,31 +93,31 @@
 /* Cột ID */
 .contact-table th:nth-child(1),
 .contact-table td:nth-child(1) {
-    width: 5%;
+    width: 10%;
 }
 
-/* Cột Tên sách */
+/* Cột Họ tên */
 .contact-table th:nth-child(2),
 .contact-table td:nth-child(2) {
-    width: 30%;
+    width: 18%;
 }
 
-/* Cột Hình ảnh */
+/* Cột Email */
 .contact-table th:nth-child(3),
 .contact-table td:nth-child(3) {
+    width: 14%;
+}
+
+/* Cột Số điện thoại */
+.contact-table th:nth-child(4),
+.contact-table td:nth-child(4) {
     width: 12%;
 }
 
-/* Cột Danh mục */
-.contact-table th:nth-child(4),
-.contact-table td:nth-child(4) {
-    width: 15%;
-}
-
-/* Cột Số lượng */
+/* Cột Nội dung */
 .contact-table th:nth-child(5),
 .contact-table td:nth-child(5) {
-    width: 10%;
+    width: 20%;
 }
 
 /* Cột Trạng thái */
@@ -129,7 +129,7 @@
 /* Cột Thao tác */
 .contact-table th:nth-child(7),
 .contact-table td:nth-child(7) {
-    width: 15%;
+    width: 13%;
 }
 
 .contact-table td button {
@@ -143,6 +143,7 @@
 
 .confirm-btn {
     background-color: #28a745;
+    color: white;
 }
 
 .confirm-btn:hover {

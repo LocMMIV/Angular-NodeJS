@@ -126,6 +126,14 @@
     color: #AB7442;
 }
 
+.dropdown-item.logout {
+    font-weight: 500;
+}
+
+.dropdown-item.logout .bi {
+    font-weight: 500;
+}
+
 .dropdown-menu .dropdown-item.logout:hover {
     background-color: #f8f9fa;
     color: red;
