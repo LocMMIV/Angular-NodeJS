@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PaginationService } from '../../../services/pagination.service';
 import { SearchService } from '../../../services/search.service';
 
@@ -9,23 +10,21 @@ import { SearchService } from '../../../services/search.service';
 })
 export class TheloaiComponent implements OnInit {
   data = [
-    { id: 1, name: 'Fiction' },
-    { id: 2, name: 'Non-Fiction' },
-    { id: 3, name: 'Khoa học' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 4, name: 'Lịch sử' },
-    { id: 5, name: 'Văn học' }
+    { id: 'F', name: 'Fiction' },
+    { id: 'GD', name: 'Giáo dục' },
+    { id: 'HD', name: 'Hành động' },
+    { id: 'HS', name: 'Hình sự' },
+    { id: 'KH', name: 'Khoa học' },
+    { id: 'KNS', name: 'Kỹ năng sống' },
+    { id: 'KD', name: 'Kinh dị' },
+    { id: 'KT', name: 'Kinh tế' },
+    { id: 'LM', name: 'Lãng mạn' },
+    { id: 'LS', name: 'Lịch sử' },
+    { id: 'NF', name: 'Non-Fiction' },
+    { id: 'TT', name: 'Tiểu thuyết' },
+    { id: 'TLH', name: 'Tâm lý học' },
+    { id: 'VH', name: 'Văn học' },
+    { id: 'CT', name: 'Chính trị' }
   ];
   
   searchTerm: string = ''; // Từ khóa tìm kiếm
@@ -35,7 +34,8 @@ export class TheloaiComponent implements OnInit {
 
   constructor(
     private paginationService: PaginationService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -71,5 +71,10 @@ export class TheloaiComponent implements OnInit {
   get totalPages(): number {
     // Tính tổng số trang dựa trên filteredData
     return this.paginationService.totalPages(this.filteredData);
+  }
+
+  // Phương thức chuyển hướng đến trang thêm sách
+  navigateToAddCategory(): void {
+    this.router.navigate(['/themtheloai']);
   }
 }

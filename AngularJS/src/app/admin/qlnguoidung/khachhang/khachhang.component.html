@@ -25,7 +25,9 @@
                 <td>{{ row.email }}</td>
                 <td>{{ row.phone }}</td>
                 <td>
-                    <button class="lock-btn">Khóa</button>
+                    <button class="lock-btn" (click)="toggleLock(row)">
+                        {{ row.status === 'Khóa' ? 'Đã khóa' : 'Khóa' }}
+                    </button>
                 </td>
             </tr>
         </tbody>

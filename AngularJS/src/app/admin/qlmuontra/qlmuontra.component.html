@@ -28,7 +28,7 @@
                 <td>{{ row.book }}</td>
                 <td>{{ row.borrowDate }}</td>
                 <td>{{ row.returnDate }}</td>
-                <td>{{ row.overdue }}</td>
+                <td>{{ getOverdueStatus(row) }}</td>
                 <td>{{ row.quantity }}</td>
                 <td>
                     <button class="edit-btn">Sửa</button>

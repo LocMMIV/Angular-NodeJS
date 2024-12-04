@@ -1,31 +1,48 @@
-<p>themsach works!</p>
-<div class="add-book-form">
-    <h3>Thêm sách mới</h3>
-    <form (ngSubmit)="addBook()">
-      <div>
-        <label for="name">Tên sách:</label>
-        <input type="text" [(ngModel)]="newBook.name" name="name" required />
-      </div>
-  
-      <div>
-        <label for="image">Ảnh sách:</label>
-        <input type="text" [(ngModel)]="newBook.image" name="image" placeholder="URL ảnh" />
-      </div>
-  
-      <div>
-        <label for="category">Thể loại:</label>
-        <input type="text" [(ngModel)]="newBook.category" name="category" required />
-      </div>
-  
-      <div>
-        <label for="quantity">Số lượng:</label>
-        <input type="number" [(ngModel)]="newBook.quantity" name="quantity" min="1" required />
-      </div>
-  
-      <div class="form-actions">
-        <button type="submit">Lưu sách</button>
-        <button type="button" (click)="closeForm.emit()">Hủy</button>
-      </div>
-    </form>
+<div class="container-fluid">
+  <div class="product-header">
+      <h1>Thêm Sách mới</h1>
   </div>
-  
+  <hr>
+
+  <div class="newbook-container">
+      <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+        <div class="row">
+          <div class="col">
+            <label for="bookName">Tên sách</label>
+            <input type="text" id="bookName" name="bookName" class="form-control" [(ngModel)]="book.bookName" required/>
+          </div>
+          <div class="col">
+            <label for="bookImage">Ảnh sách</label>
+            <input type="file" id="bookImage" name="bookImage" class="form-control" (change)="onFileSelected($event)" required/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="bookCategory">Thể loại</label>
+            <select id="bookCategory" name="bookCategory" class="form-control" [(ngModel)]="book.category" required>
+              <option value="">Chọn thể loại</option>
+              <option value="Khoa học">Khoa học</option>
+              <option value="Văn học">Văn học</option>
+              <option value="Lịch sử">Lịch sử</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="bookQuantity">Số lượng sách</label>
+            <input type="number" id="bookQuantity" name="bookQuantity" class="form-control" [(ngModel)]="book.quantity" required min="1"/>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col">
+            <label for="bookDescription">Mô tả</label>
+            <textarea id="bookDescription" name="bookDescription" class="form-control" rows="4" [(ngModel)]="book.description"></textarea>
+          </div>
+        </div>
+    
+        <!-- Nút Thêm Sách -->
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="!bookForm.valid"> Thêm Sách</button>
+      </form>
+  </div>
+</div>

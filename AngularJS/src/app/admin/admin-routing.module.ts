@@ -10,6 +10,8 @@ import { TheloaiComponent } from './qlsanpham/theloai/theloai.component';
 import { QllienheComponent } from './qllienhe/qllienhe.component';
 import { QlmuontraComponent } from './qlmuontra/qlmuontra.component';
 import { ThemsachComponent } from './qlsanpham/sach/themsach/themsach.component';
+import { ThemtheloaiComponent } from './qlsanpham/theloai/themtheloai/themtheloai.component';
+import { ThemnhanvienComponent } from './qlnguoidung/nhanvien/themnhanvien/themnhanvien.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, children: [
@@ -21,7 +23,9 @@ const routes: Routes = [
       { path: 'qlsanpham/theloai', component: TheloaiComponent },
       { path: 'qllienhe', component: QllienheComponent },
       { path: 'qlmuontra', component: QlmuontraComponent },
-      { path: 'qlsanpham/sach/themsach', component: ThemsachComponent },
+      { path: 'themsach', component: ThemsachComponent },
+      { path: 'themtheloai', component:ThemtheloaiComponent },
+      { path: 'themnhanvien', component: ThemnhanvienComponent },
       { path: 'logout', redirectTo: '/auth/logout', pathMatch: 'full' }
     ]
   }
