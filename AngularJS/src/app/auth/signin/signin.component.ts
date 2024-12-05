@@ -11,13 +11,10 @@ export class SigninComponent {
   email = '';
   password = '';
 
-  constructor(
-    readonly authService: AuthService,
-    readonly router: Router
-  ) {}
+  constructor(readonly authService: AuthService, readonly router: Router) {}
 
-  login() {
-    if (this.authService.login(this.email, this.password)) {
+  async login() {
+    if (await this.authService.login(this.email, this.password)) {
       alert('Đăng nhập thành công!');
       this.router.navigate(['/']);
     } else {

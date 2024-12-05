@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
   firstName: string = '';
@@ -14,11 +14,8 @@ export class SignupComponent {
   password: string = '';
   confirmPassword: string = '';
 
-  constructor(
-    readonly authService: AuthService,
-    readonly router: Router
-  ) {}
-  onSubmit() {
+  constructor(readonly authService: AuthService, readonly router: Router) {}
+  async onSubmit() {
     if (this.password !== this.confirmPassword) {
       alert('Mật khẩu và xác nhận mật khẩu không khớp!');
       return;
@@ -29,13 +26,13 @@ export class SignupComponent {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      password: this.password
+      password: this.password,
     };
-    
+
     // Giả lập đăng ký (có thể thay thế bằng gọi API backend để đăng ký)
-    if (this.authService.register(user)) {
+    if (await this.authService.register(user)) {
       alert('Đăng ký thành công!');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/signin']);
     } else {
       alert('Đăng ký thất bại!');
     }

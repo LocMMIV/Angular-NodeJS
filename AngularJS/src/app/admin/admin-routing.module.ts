@@ -13,8 +13,10 @@ import { ThemsachComponent } from './qlsanpham/sach/themsach/themsach.component'
 
 const routes: Routes = [
   {
-    path: 'admin', component: AdminComponent, children: [
-      { path: '', redirectTo: 'thongke', pathMatch: 'full' },  // Điều hướng mặc định
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: '', redirectTo: 'thongke', pathMatch: 'full' }, // Điều hướng mặc định
       { path: 'thongke', component: ThongkeComponent },
       { path: 'qlnguoidung/khachhang', component: KhachhangComponent },
       { path: 'qlnguoidung/nhanvien', component: NhanvienComponent },
@@ -24,12 +26,12 @@ const routes: Routes = [
       { path: 'qlmuontra', component: QlmuontraComponent },
       { path: 'qlsanpham/sach/themsach', component: ThemsachComponent },
       { path: 'logout', redirectTo: '/login' },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

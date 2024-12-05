@@ -1,25 +1,41 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private isLoggedIn = false;
-
+  constructor(private readonly apiService: ApiService) {}
   // Đăng nhập
-  login(email: string, password: string): boolean {
-    if (email === 'admin' && password === 'admin') {
-      this.isLoggedIn = true;
-      localStorage.setItem('user', JSON.stringify({ email: 'admin' }));
-      return true;
+  async login(email: string, password: string) {
+    try {
+      const res: any = await this.apiService
+        .post('auth/login', { email, password })
+        .toPromise();
+      console.log(res);
+      if (res) {
+        this.isLoggedIn = true;
+        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('accessToken', JSON.stringify(res.accessToken));
+
+        return true;
+      }
+      // if (email === 'admin' && password === 'admin') {
+      // this.isLoggedIn = true;
+      //   localStorage.setItem('user', JSON.stringify({ email: 'admin' }));
+      //   return true;
+      // }
+      return false;
+    } catch (error) {
+      return false;
     }
-    return false;
   }
 
   // Đăng xuất
   logout() {
     this.isLoggedIn = false;
-    localStorage.removeItem('user');
+    localStorage.clear();
   }
 
   // Kiểm tra xem người dùng đã đăng nhập chưa
@@ -28,20 +44,25 @@ export class AuthService {
   }
 
   // Đăng ký người dùng mới
-  register(user: { firstName: string, lastName: string, email: string, password: string }): boolean {
-    // Kiểm tra xem email đã tồn tại chưa (giả lập kiểm tra, trong thực tế bạn sẽ gọi API)
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const existingUser = users.find((u: any) => u.email === user.email);
-
-    if (existingUser) {
-      alert('Tài khoản đã tồn tại!');
-      return false; // Nếu đã có người dùng với email này
+  async register(user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+  }) {
+    try {
+      await this.apiService
+        .post('user', {
+          fullName: `${user.firstName} ${user.lastName}`,
+          email: user.email,
+          password: user.password,
+          address: 'string',
+          dob: new Date(),
+        })
+        .toPromise();
+      return true;
+    } catch (error) {
+      return false;
     }
-
-    // Lưu người dùng vào localStorage (hoặc cơ sở dữ liệu khi có backend)
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-
-    return true;
   }
 }
