@@ -15,15 +15,14 @@ export class LogoutComponent {
 
     if (confirmLogout) {
       // Nếu người dùng xác nhận đăng xuất
-      localStorage.removeItem('authToken');
+      localStorage.clear();
       sessionStorage.clear();
 
       // Điều hướng đến trang đăng nhập
       this.router.navigate(['/auth/signin']);
     } else {
       // Nếu người dùng hủy, quay lại trang trước đó trong lịch sử
-      window.history.back();  // Quay lại trang trước đó
+      window.history.back(); // Quay lại trang trước đó
     }
   }
 }
-

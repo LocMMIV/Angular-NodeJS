@@ -43,6 +43,12 @@ export class AuthService {
     return !!localStorage.getItem('user');
   }
 
+  checkAdmin() {
+    const user = JSON.parse(localStorage.getItem('user') as string);
+    if (user.role === 'admin') return true;
+    return false;
+  }
+
   // Đăng ký người dùng mới
   async register(user: {
     firstName: string;

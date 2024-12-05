@@ -16,7 +16,7 @@ export class SigninComponent {
   async login() {
     if (await this.authService.login(this.email, this.password)) {
       alert('Đăng nhập thành công!');
-      this.router.navigate(['/']);
+      this.router.navigate(['/user']);
     } else {
       alert('Tên đăng nhập hoặc mật khẩu không đúng!');
     }

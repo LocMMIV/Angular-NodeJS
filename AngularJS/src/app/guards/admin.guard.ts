@@ -17,13 +17,9 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    console.log('bàksbkadsbkjbdsk');
     // Kiểm tra nếu người dùng đã đăng nhập và có quyền truy cập admin
-    if (this.authService.isAuthenticated()) {
-      const user = JSON.parse(localStorage.getItem('user') as string);
-      console.log(user);
-      if (user.role === 'admin') return true;
-      return false;
+    if (this.authService.isAuthenticated() && this.authService.checkAdmin()) {
+      return true;
     } else {
       alert('Chỉ admin mới được truy cập trang này!');
       this.router.navigate(['/auth/signin']); // Điều hướng đến trang đăng nhập

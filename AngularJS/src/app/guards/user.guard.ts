@@ -17,6 +17,7 @@ export class UserGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
+    console.log('ôkkoko');
     if (this.authService.isAuthenticated()) {
       return true;
     } else {
