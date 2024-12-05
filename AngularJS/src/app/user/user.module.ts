@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TrangchuComponent } from './trangchu/trangchu.component';
 import { TheloaiComponent } from './theloai/theloai.component';
 import { LienheComponent } from './lienhe/lienhe.component';
+import { MuonsachComponent } from './theloai/muonsach/muonsach.component';
 
 
 
@@ -22,6 +23,7 @@ import { LienheComponent } from './lienhe/lienhe.component';
     TrangchuComponent,
     TheloaiComponent,
     LienheComponent,
+    MuonsachComponent,
     
   ],
   imports: [

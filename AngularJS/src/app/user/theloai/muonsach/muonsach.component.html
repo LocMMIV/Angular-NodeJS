@@ -1,0 +1,9 @@
+<div class="borrow-modal">
+    <h2>Mượn sách: {{ book.title }}</h2>
+    <p>Tác giả: {{ book.author }}</p>
+    <p>Thể loại: {{ book.category }}</p>
+    <p>Trạng thái: {{ book.status }}</p>
+    <button (click)="onConfirm()">Xác nhận mượn</button>
+    <button (click)="onClose()">Hủy</button>
+  </div>
+  

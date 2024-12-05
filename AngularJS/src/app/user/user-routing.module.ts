@@ -5,6 +5,7 @@ import { UserComponent } from './user.component';
 import { TrangchuComponent } from './trangchu/trangchu.component';
 import { TheloaiComponent } from './theloai/theloai.component';
 import { LienheComponent } from './lienhe/lienhe.component';
+import { MuonsachComponent } from './theloai/muonsach/muonsach.component';
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'trangchu', component: TrangchuComponent },
       { path: 'theloai', component: TheloaiComponent },
       { path: 'lienhe', component: LienheComponent },
+      { path: 'muonsach', component: MuonsachComponent },
       { path: 'logout', redirectTo: '/auth/logout', pathMatch: 'full' }
       
     ]

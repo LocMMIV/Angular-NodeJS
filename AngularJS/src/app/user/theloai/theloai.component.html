@@ -4,49 +4,95 @@
     </div>
     <div class="banner-content">
         <h1>KHÁM PHÁ THỂ LOẠI SÁCH!</h1>
-        <p>Từ tiểu thuyết đến khoa học, tìm ngay thể loại yêu thích của bạn!</p>
+        <p>Khám phá ngay kho sách phong phú với đa dạng thể loại, <br>đáp ứng mọi đam mê đọc sách của bạn!</p>
     </div>
 </div>
 
-<div class="container"> 
+<div class="container-fluid"> 
     <div class="filters">
         <div class="filter-item">
             <div class="category-filters">
-                <button class="category"><i class="bi bi-funnel"></i> Lọc</button>
-                <button *ngIf="selectedCategory === 'Tiểu thuyết' || !selectedCategory" (click)="setCategory('Tiểu thuyết')" [class.active]="selectedCategory === 'Tiểu thuyết'">Tiểu thuyết</button>
-                <button *ngIf="selectedCategory === 'Lãng mạn' || !selectedCategory" (click)="setCategory('Lãng mạn')" [class.active]="selectedCategory === 'Lãng mạn'">Lãng mạn</button>
-                <button *ngIf="selectedCategory === 'Văn học' || !selectedCategory" (click)="setCategory('Văn học')" [class.active]="selectedCategory === 'Văn học'">Văn học</button>
-                <button *ngIf="selectedCategory === 'Hành động' || !selectedCategory" (click)="setCategory('Hành động')" [class.active]="selectedCategory === 'Hành động'">Hành động</button>
-                <button *ngIf="selectedCategory === 'Khoa học viễn tưởng' || !selectedCategory" (click)="setCategory('Khoa học viễn tưởng')" [class.active]="selectedCategory === 'Khoa học viễn tưởng'">Khoa học viễn tưởng</button>
-                <button *ngIf="selectedCategory === 'Giáo dục' || !selectedCategory" (click)="setCategory('Giáo dục')" [class.active]="selectedCategory === 'Giáo dục'">Giáo dục</button>
-                <button *ngIf="selectedCategory === 'Kỹ năng sống' || !selectedCategory" (click)="setCategory('Kỹ năng sống')" [class.active]="selectedCategory === 'Kỹ năng sống'">Kỹ năng sống</button>
-                <button *ngIf="selectedCategory === 'Tâm lý học' || !selectedCategory" (click)="setCategory('Tâm lý học')" [class.active]="selectedCategory === 'Tâm lý học'">Tâm lý học</button>
-                <button *ngIf="selectedCategory === 'Lịch sử' || !selectedCategory" (click)="setCategory('Lịch sử')" [class.active]="selectedCategory === 'Lịch sử'">Lịch sử</button>
-                <button *ngIf="selectedCategory === 'Kinh tế' || !selectedCategory" (click)="setCategory('Kinh tế')" [class.active]="selectedCategory === 'Kinh tế'">Kinh tế</button>
-                <button *ngIf="selectedCategory === 'Chính trị' || !selectedCategory" (click)="setCategory('Chính trị')" [class.active]="selectedCategory === 'Chính trị'">Chính trị</button>
-                <button *ngIf="selectedCategory === 'Non-fiction' || !selectedCategory" (click)="setCategory('Non-fiction')" [class.active]="selectedCategory === 'Non-fiction'">Non-fiction</button>
-                <button *ngIf="selectedCategory === 'Fiction' || !selectedCategory" (click)="setCategory('Fiction')" [class.active]="selectedCategory === 'Fiction'">Fiction</button>
-                <button *ngIf="selectedCategory === 'Hình sự' || !selectedCategory" (click)="setCategory('Hình sự')" [class.active]="selectedCategory === 'Hình sự'">Hình sự</button>
-                <button *ngIf="selectedCategory === 'Triết học' || !selectedCategory" (click)="setCategory('Triết học')" [class.active]="selectedCategory === 'Triết học'">Triết học</button>
-                <button *ngIf="selectedCategory === 'Kỳ ảo' || !selectedCategory" (click)="setCategory('Kỳ ảo')" [class.active]="selectedCategory === 'Kỳ ảo'">Kỳ ảo</button>
+                <div class="filter-btn">
+                    <button class="category" (click)="toggleMenu()"><i class="bi bi-funnel"></i> Lọc</button>
+                </div>
+                <div class="category-options" *ngIf="selectedCategories.length === 0">
+                    <button 
+                        *ngFor="let category of categories.slice(0, 10)" 
+                        (click)="toggleCategory(category, true)" 
+                        [class.active]="selectedCategories.includes(category)">
+                        {{ category }}
+                    </button>
+                </div>
+                
 
-                <button *ngIf="selectedCategory" class="clear-btn" (click)="clearCategory()">Xóa tất cả</button>
-            </div>
+                <!-- Menu popup -->
+                <div class="filter-menu" *ngIf="showMenu">
+                    <h3>Chọn thể loại:</h3>
+                    <div class="category-options">
+                        <button 
+                            *ngFor="let category of categories" 
+                            (click)="toggleCategory(category, false)"  
+                            [class.active]="selectedCategories.includes(category)">
+                            {{ category }}
+                        </button>
+                    </div>
+                
+                    <h3>Sắp xếp theo:</h3>
+                    <div class="sort-options">
+                        <label>
+                            <input type="radio" name="sort" value="newest" [(ngModel)]="selectedSort" /> Mới nhất
+                        </label>
+                        <label>
+                            <input type="radio" name="sort" value="asc" [(ngModel)]="selectedSort" /> A-Z
+                        </label>
+                        <label>
+                            <input type="radio" name="sort" value="desc" [(ngModel)]="selectedSort" /> Z-A
+                        </label>
+                    </div>
+                
+                    <div class="menu-actions">
+                        <button class="cancel-btn" (click)="cancel()">Hủy</button>
+                        <button class="apply-btn" (click)="apply()">Áp dụng</button>
+                    </div>
+                </div>
+                
+
+                <div class="selected-filters">
+                    <span *ngFor="let filter of appliedFilters">
+                        {{ filter }}
+                        <button class="remove-btn" (click)="removeFilter(filter)"><i class="bi bi-x"></i></button>
+                    </span>
+                    <button *ngIf="appliedFilters.length > 0" class="clear-all" (click)="clearAll()">Xóa tất cả</button>
+                </div>
             </div>
         </div>
 
+
         <div class="sort-item">
             <div class="sort-options">
-                <label for="sort">Sắp xếp theo:</label>
+                <label class="sort" for="sort">Sắp xếp theo:</label>
                 <div class="sort-option" (click)="setSort('newest')" [class.active]="selectedSort === 'newest'">Mới nhất</div>
                 <div class="sort-option" (click)="setSort('asc')" [class.active]="selectedSort === 'asc'">A-Z</div>
                 <div class="sort-option" (click)="setSort('desc')" [class.active]="selectedSort === 'desc'">Z-A</div>
             </div>
         </div>
+    </div>
 
     <div class="product-list">
         <div *ngFor="let book of filteredBooks" class="book-card">
-            <img [src]="book.image" alt="{{ book.title }}" class="book-image">
+            <div class="image-container">
+                <img [src]="book.image" alt="{{ book.title }}" class="book-image">
+                <button class="borrow-button" (click)="toggleDropdown(book)">Mượn sách</button>
+                <div class="borrow-dropdown" *ngIf="book === selectedBook">
+                    <h3>Mượn sách: {{ book.title }}</h3>
+                    <p>Tác giả: {{ book.author }}</p>
+                    <p>Thể loại: {{ book.category }}</p>
+                    <p>Trạng thái: {{ book.status }}</p>
+                    <button (click)="handleBorrow(book)">Xác nhận mượn</button>
+                    <button (click)="closeDropdown()">Hủy</button>
+                </div>
+
+            </div>
             <div class="book-info">
                 <h3 class="book-title">{{ book.title }}</h3>
                 <p class="book-author">{{ book.author }}</p>
@@ -55,4 +101,6 @@
             </div>
         </div>
     </div>
+    
+
 </div>

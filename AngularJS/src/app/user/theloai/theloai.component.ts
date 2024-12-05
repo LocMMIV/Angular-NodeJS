@@ -107,42 +107,126 @@ export class TheloaiComponent {
     { title: 'Gặp Gỡ Những Con Người Tối Mật', author: 'Dan Brown', category: 'Hành động', status: '', image: 'icon.png' }
   ];
   
-// Biến lưu trữ thể loại và thứ tự sắp xếp
-selectedCategory: string = '';
-selectedSort: string = '';
+  categories = [
+    'Tiểu thuyết', 'Lãng mạn', 'Văn học', 'Hành động',
+    'Khoa học viễn tưởng', 'Giáo dục', 'Kỹ năng sống',
+    'Tâm lý học', 'Lịch sử', 'Kinh tế', 'Chính trị',
+    'Non-fiction', 'Fiction', 'Hình sự', 'Triết học', 'Kỳ ảo'
+  ];
+  selectedCategories: string[] = [];
+  appliedFilters: string[] = [];
+  selectedCategory: string = '';
+  selectedSort: string = '';
 
-// Phương thức xóa tất cả thể loại
-clearCategory() {
-  this.selectedCategory = '';
+  showMenu: boolean = false;
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
+
+  removeFilter(filter: string) {
+      this.appliedFilters = this.appliedFilters.filter(item => item !== filter);
+      this.selectedCategories = this.selectedCategories.filter(item => item !== filter);
+  }
+
+  clearAll() {
+      this.appliedFilters = [];
+      this.selectedCategories = [];
+  }
+
+
+  showOutsideCategories: boolean = true;
+
+
+  toggleCategory(category: string, autoApply: boolean) {
+  if (this.selectedCategories.includes(category)) {
+    // Nếu thể loại đã được chọn, xóa nó khỏi danh sách đã chọn
+    this.selectedCategories = this.selectedCategories.filter(item => item !== category);
+  } else {
+    // Nếu thể loại chưa được chọn, thêm nó vào danh sách đã chọn
+    this.selectedCategories.push(category);
+  }
+
+  // Nếu autoApply là true (chọn từ ngoài menu), áp dụng lọc ngay lập tức
+  if (this.selectedCategories.length > 0) {
+    this.showOutsideCategories = false;
+  }
+
+  // Nếu autoApply là true (chọn từ ngoài menu), áp dụng lọc ngay lập tức
+  if (autoApply) {
+    // Áp dụng bộ lọc
+    this.apply();
+  }
 }
 
-// Lọc và sắp xếp các sản phẩm
-get filteredBooks() {
-  let filtered = this.books;
+apply() {
+  this.appliedFilters = [...this.selectedCategories];
+  this.showMenu = false;
+}
 
+cancel() {
+  this.showMenu = false; // Đóng menu mà không thay đổi
+}
+  // Phương thức xóa tất cả thể loại
+  clearCategory() {
+    this.selectedCategory = '';
+  }
+
+
+
+  // Lọc và sắp xếp các sản phẩm
+  get filteredBooks() {
+    let filtered = this.books;
+
+    // Lọc theo thể loại đã chọn
   if (this.selectedCategory) {
-    filtered = filtered.filter(book => book.category === this.selectedCategory);
+    filtered = filtered.filter(book => book.category.toLowerCase().includes(this.selectedCategory.toLowerCase()));
   }
 
-  if (this.selectedSort === 'asc') {
-    filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (this.selectedSort === 'desc') {
-    filtered = filtered.sort((a, b) => b.title.localeCompare(a.title));
-  } else if (this.selectedSort === 'newest') {
-    filtered = filtered.reverse();
+  // Lọc theo các bộ lọc đã áp dụng
+  if (this.appliedFilters.length > 0) {
+    filtered = filtered.filter(book => {
+      return this.appliedFilters.some(filter => book.category.toLowerCase().includes(filter.toLowerCase()));
+    });
   }
 
-  return filtered;
-}
+    if (this.selectedSort === 'asc') {
+      filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (this.selectedSort === 'desc') {
+      filtered = filtered.sort((a, b) => b.status.localeCompare(a.status));
+    } else if (this.selectedSort === 'newest') {
+      filtered = filtered.filter(book => book.status === 'new');
+      filtered = filtered.sort((a, b) => b.status.localeCompare(a.status));
+    }
 
-// Phương thức thay đổi thể loại
-setCategory(category: string) {
-  this.selectedCategory = category;
-}
+    return filtered;
+  }
 
-// Phương thức thay đổi thứ tự sắp xếp
-setSort(sort: string) {
-  this.selectedSort = sort;
-}
+  // Phương thức thay đổi thứ tự sắp xếp
+  setSort(sort: string) {
+    this.selectedSort = sort;
+  }
 
+  selectedBook: any = null; // Cuốn sách được chọn để mượn
+
+  // Hàm mở dropdown khi nhấn nút "Mượn sách"
+  toggleDropdown(book: any) {
+    if (this.selectedBook === book) {
+      this.selectedBook = null; // Nếu cuốn sách đã được chọn, đóng dropdown
+    } else {
+      this.selectedBook = book; // Mở dropdown với cuốn sách được chọn
+    }
+  }
+
+  // Hàm xử lý xác nhận mượn sách
+  handleBorrow(book: any) {
+    console.log('Mượn sách:', book);
+    // Logic xử lý mượn sách (ví dụ: gọi API hoặc lưu vào cơ sở dữ liệu)
+    this.selectedBook = null; // Đóng dropdown sau khi xác nhận
+  }
+
+  // Hàm đóng dropdown
+  closeDropdown() {
+    this.selectedBook = null; // Đóng dropdown
+  }
 }
