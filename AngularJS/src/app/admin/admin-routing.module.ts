@@ -10,13 +10,15 @@ import { TheloaiComponent } from './qlsanpham/theloai/theloai.component';
 import { QllienheComponent } from './qllienhe/qllienhe.component';
 import { QlmuontraComponent } from './qlmuontra/qlmuontra.component';
 import { ThemsachComponent } from './qlsanpham/sach/themsach/themsach.component';
+import { ThemtheloaiComponent } from './qlsanpham/theloai/themtheloai/themtheloai.component';
+import { ThemnhanvienComponent } from './qlnguoidung/nhanvien/themnhanvien/themnhanvien.component';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     children: [
-      { path: '', redirectTo: 'thongke', pathMatch: 'full' }, // Điều hướng mặc định
+      { path: '', redirectTo: 'thongke', pathMatch: 'full' },
       { path: 'thongke', component: ThongkeComponent },
       { path: 'qlnguoidung/khachhang', component: KhachhangComponent },
       { path: 'qlnguoidung/nhanvien', component: NhanvienComponent },
@@ -24,8 +26,10 @@ const routes: Routes = [
       { path: 'qlsanpham/theloai', component: TheloaiComponent },
       { path: 'qllienhe', component: QllienheComponent },
       { path: 'qlmuontra', component: QlmuontraComponent },
-      { path: 'qlsanpham/sach/themsach', component: ThemsachComponent },
-      { path: 'logout', redirectTo: '/login' },
+      { path: 'themsach', component: ThemsachComponent },
+      { path: 'themtheloai', component: ThemtheloaiComponent },
+      { path: 'themnhanvien', component: ThemnhanvienComponent },
+      { path: 'logout', redirectTo: '/auth/logout', pathMatch: 'full' },
     ],
   },
 ];

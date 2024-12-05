@@ -14,6 +14,8 @@ import { AdminComponent } from './admin.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { QlmuontraComponent } from './qlmuontra/qlmuontra.component';
 import { ThemsachComponent } from './qlsanpham/sach/themsach/themsach.component';
+import { ThemtheloaiComponent } from './qlsanpham/theloai/themtheloai/themtheloai.component';
+import { ThemnhanvienComponent } from './qlnguoidung/nhanvien/themnhanvien/themnhanvien.component';
 
 
 @NgModule({
@@ -28,13 +30,14 @@ import { ThemsachComponent } from './qlsanpham/sach/themsach/themsach.component'
     AdminComponent,
     FooterComponent,
     QlmuontraComponent,
-    ThemsachComponent
+    ThemsachComponent,
+    ThemtheloaiComponent,
+    ThemnhanvienComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule
-  ]
+  ],
 })
 export class AdminModule { }
-

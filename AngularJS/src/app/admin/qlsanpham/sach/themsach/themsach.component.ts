@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-themsach',
@@ -6,20 +6,24 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './themsach.component.css'
 })
 export class ThemsachComponent {
-  @Output() closeForm = new EventEmitter<void>(); // Để đóng form
-  @Output() bookAdded = new EventEmitter<any>(); // Để gửi dữ liệu sách mới
-
-  newBook = {
-    name: '',
-    image: '',
+  book = {
+    bookName: '',
     category: '',
-    quantity: 1
+    image: null,
+    quantity: null,
+    description: ''
   };
 
-  // Hàm thêm sách
-  addBook(): void {
-    const newBookEntry = { ...this.newBook, id: Date.now() }; // Tạo ID tạm thời
-    this.bookAdded.emit(newBookEntry); // Gửi sách mới ra ngoài
-    this.closeForm.emit(); // Đóng form sau khi thêm
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.book.image = file;
+    }
+  }
+
+  onSubmit(): void {
+    console.log('Thông tin sách:', this.book);
+    alert('Sách đã được thêm thành công!');
+    // Xử lý logic thêm sách tại đây (ví dụ: gọi API)
   }
 }

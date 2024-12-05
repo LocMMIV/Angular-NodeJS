@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { XephangComponent } from './xephang.component';
+import { LogoutComponent } from './logout.component';
 
-describe('XephangComponent', () => {
-  let component: XephangComponent;
-  let fixture: ComponentFixture<XephangComponent>;
+describe('LogoutComponent', () => {
+  let component: LogoutComponent;
+  let fixture: ComponentFixture<LogoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [XephangComponent]
+      declarations: [LogoutComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(XephangComponent);
+    fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

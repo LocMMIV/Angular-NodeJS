@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="contact-header">
-        <h1>Danh sách Liên Hệ</h1>
+        <h1>Quản lý Liên Hệ</h1>
     </div>
     <hr>
     <div class="search-container">
@@ -31,7 +31,9 @@
                         {{ row.status }}
                     </td>
                     <td>
-                        <button class="confirm-btn">Xác nhận</button>
+                        <button class="confirm-btn" (click)="confirmStatus(row)">
+                            {{ row.status === 'Giải quyết' ? 'Đã xác nhận' : 'Xác nhận' }}
+                        </button>
                     </td>
                 </tr>
             </tbody>

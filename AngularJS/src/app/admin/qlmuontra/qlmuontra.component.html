@@ -28,12 +28,12 @@
                 <td>{{ row.book }}</td>
                 <td>{{ row.borrowDate }}</td>
                 <td>{{ row.returnDate }}</td>
-                <td>{{ row.overdue }}</td>
+                <td>{{ getOverdueStatus(row) }}</td>
                 <td>{{ row.quantity }}</td>
                 <td>
                     <button class="edit-btn">Sửa</button>
                     <button class="delete-btn">Xóa</button>
-                    <button class="details-btn">Chi tiết</button>
+                    <button class="details-btn">Xem chi tiết</button>
             </td>
             </tr>
         </tbody>

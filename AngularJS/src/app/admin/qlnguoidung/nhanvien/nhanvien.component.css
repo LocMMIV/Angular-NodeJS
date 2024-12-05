@@ -1,6 +1,6 @@
 .container-fluid {
     width: 98%;
-    height: 95.5%;
+    height: 85.8%;
     margin: 20px auto;
     padding: 20px;
     background: white;
@@ -68,7 +68,7 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Đảm bảo bảng chiếm không gian còn lại */
+    flex-grow: 1;
 }
 
 .employee-table {
@@ -107,7 +107,7 @@
 /* Cột ID */
 .employee-table th:nth-child(1),
 .employee-table td:nth-child(1) {
-    width: 10%;
+    width: 15%;
 }
 
 /* Cột Tên nhân viên */
@@ -137,7 +137,7 @@
 /* Cột Thao tác */
 .employee-table th:nth-child(6),
 .employee-table td:nth-child(6) {
-    width: 20%;
+    width: 15%;
 }
 
 .edit-btn,
