@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="employee-header">
+        <h1>Quản lý nhân viên</h1>
+        <button (click)="navigateToAddEmployee()">Thêm nhân viên</button>
+    </div>
+    <hr>
+    <div class="search-container">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Tìm kiếm nhân viên" [(ngModel)]="searchTerm" (keydown.enter)="filterBooks()">
+    </div>
+    <div class="employee-table-container">
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên nhân viên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of paginatedData">
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.phone }}</td>
+                    <td class="status" 
+                        [class.active]="row.status === 'Đang làm'" 
+                        [class.inactive]="row.status === 'Nghỉ việc'">
+                        {{ row.status }}
+                    </td>
+                    <td>
+                        <button class="edit-btn">Sửa</button>
+                        <button class="delete-btn">Xóa</button>
+                        <button 
+                            class="lock-btn" 
+                            (click)="toggleLock(row)">
+                            {{ row.status === 'Nghỉ việc' ? 'Đã khóa' : 'Khóa' }}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Phân trang -->
+        <div class="pagination">
+            <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+            <i class="bi bi-caret-left"></i>
+            </button>
+        
+            <ng-container *ngFor="let page of visiblePages">
+            <button
+                *ngIf="page !== '...'; else dots"
+                [class.active]="page === currentPage"
+                (click)="changePage(page)">
+                {{ page }}
+            </button>
+            <ng-template #dots>
+                <span>...</span>
+            </ng-template>
+            </ng-container>
+        
+            <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+            <i class="bi bi-caret-right"></i>
+            </button>
+        </div>
+    </div>
+
+</div>

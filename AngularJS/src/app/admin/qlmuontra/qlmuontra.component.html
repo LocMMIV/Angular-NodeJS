@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="borrow-return-header">
+        <h1>Quản lý Mượn Trả Sách</h1>
+    </div>
+    <hr>
+    <div class="search-container">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Tìm kiếm mượn trả" [(ngModel)]="searchTerm" (keydown.enter)="filterBooks()">
+    </div>
+    <div class="borrow-return-table-container">
+        <table class="borrow-return-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên khách hàng</th>
+                <th>Sách</th>
+                <th>Ngày mượn</th>
+                <th>Ngày trả</th>
+                <th>Số ngày quá hạn</th>
+                <th>Số lượng</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of paginatedData">
+                <td>{{ row.id }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.book }}</td>
+                <td>{{ row.borrowDate }}</td>
+                <td>{{ row.returnDate }}</td>
+                <td>{{ getOverdueStatus(row) }}</td>
+                <td>{{ row.quantity }}</td>
+                <td>
+                    <button class="edit-btn">Sửa</button>
+                    <button class="delete-btn">Xóa</button>
+                    <button class="details-btn">Xem chi tiết</button>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+
+        <!-- Phân trang -->
+        <div class="pagination">
+            <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+            <i class="bi bi-caret-left"></i>
+            </button>
+        
+            <ng-container *ngFor="let page of visiblePages">
+            <button
+                *ngIf="page !== '...'; else dots"
+                [class.active]="page === currentPage"
+                (click)="changePage(page)">
+                {{ page }}
+            </button>
+            <ng-template #dots>
+                <span>...</span>
+            </ng-template>
+            </ng-container>
+        
+            <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+            <i class="bi bi-caret-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
