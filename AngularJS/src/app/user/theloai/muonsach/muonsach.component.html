@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="vote">
+      <div class="vote-image">
+        <img src="icon.png" alt="Ảnh sách">
+      </div>
+      <div class="vote-text">
+        <h2>Lập phiếu mượn</h2>
+        <form [formGroup]="borrowForm" (ngSubmit)="onSubmit()" class="borrow-form">
+          <div class="row">
+            <div class="field">
+              <label for="fullName">Họ và tên:</label>
+              <input type="text" id="fullName" formControlName="fullName" required autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="cccd">CCCD:</label>
+              <input type="text" id="cccd" formControlName="cccd" required autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="phone">Số điện thoại:</label>
+              <input type="tel" id="phone" formControlName="phone" required autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="email">Email:</label>
+              <input type="email" id="email" formControlName="email" required autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="bookTitle">Tên sách:</label>
+              <input type="text" id="bookTitle" formControlName="bookTitle" required autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="quantity">Số lượng:</label>
+              <input type="number" id="quantity" formControlName="quantity" min="1" required autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="borrowDate">Ngày mượn:</label>
+              <input type="date" id="borrowDate" formControlName="borrowDate" required autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="returnDate">Ngày trả:</label>
+              <input type="date" id="returnDate" formControlName="returnDate" required autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="notes">Ghi chú:</label>
+            <textarea id="notes" formControlName="notes" rows="3"></textarea>
+          </div>
+          <div class="field">
+            <label class="checkbox-label">
+              <input type="checkbox" formControlName="agreement">
+              Tôi đồng ý với tất cả điều khoản.
+            </label>
+          </div>
+          <button type="submit" [disabled]="borrowForm.invalid">Đăng ký mượn sách</button>
+        </form>
+      </div>
+    </div>
+  </div>
